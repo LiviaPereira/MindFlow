@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos de Bem-Estar - MindFlow</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🧠 MindFlow</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Check-in</a></li>
+                <li><a href="recursos.html" class="active">Recursos</a></li>
+                <li><a href="index.html#sobre">Sobre</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero recursos-hero">
+        <div class="container">
+            <h1>Biblioteca de Recursos</h1>
+            <p>Acesse artigos, vídeos e técnicas para melhorar seu bem-estar</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="recursos-section">
+            <div class="filter-container">
+                <h2>Filtrar por Foco</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="todos">Todos</button>
+                    <button class="filter-btn" data-filter="Estresse">Estresse</button>
+                    <button class="filter-btn" data-filter="Foco">Foco</button>
+                    <button class="filter-btn" data-filter="Produtividade">Produtividade</button>
+                    <button class="filter-btn" data-filter="Bem-estar">Bem-estar</button>
+                    <button class="filter-btn" data-filter="Saúde">Saúde</button>
+                </div>
+            </div>
+
+            <div class="recursos-grid" id="recursosGrid">
+                <!-- Recursos serão inseridos aqui via JavaScript -->
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Pronto para começar?</h2>
+            <p>Realize seu primeiro check-in e descubra quais recursos são recomendados para você.</p>
+            <a href="index.html" class="btn btn-primary">Fazer Check-in Agora</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MindFlow - Plataforma de Bem-Estar Digital. Desenvolvido com ❤️ para o futuro do trabalho.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Dados dos recursos (simulados)
+        const recursos = [
+            {
+                id: 101,
+                titulo: "Técnica de Respiração 4-7-8",
+                tipo: "Técnica",
+                foco: "Estresse",
+                descricao: "Uma técnica de respiração simples e eficaz para reduzir a ansiedade e o estresse em minutos.",
+                url: "https://mindflow.com/respiracao"
+            },
+            {
+                id: 102,
+                titulo: "Artigo: Gerenciamento de Tempo",
+                tipo: "Artigo",
+                foco: "Produtividade",
+                descricao: "Dicas práticas para organizar melhor seu tempo e aumentar a produtividade no trabalho.",
+                url: "https://mindflow.com/tempo"
+            },
+            {
+                id: 103,
+                titulo: "Vídeo: Meditação Guiada para Foco",
+                tipo: "Vídeo",
+                foco: "Foco",
+                descricao: "Uma meditação de 10 minutos para melhorar sua concentração e foco durante o trabalho.",
+                url: "https://mindflow.com/meditacao"
+            },
+            {
+                id: 104,
+                titulo: "Guia: Trabalho Híbrido Equilibrado",
+                tipo: "Artigo",
+                foco: "Bem-estar",
+                descricao: "Estratégias para equilibrar trabalho remoto e presencial mantendo a qualidade de vida.",
+                url: "https://mindflow.com/hibrido"
+            },
+            {
+                id: 105,
+                titulo: "Exercício: Alongamento no Trabalho",
+                tipo: "Técnica",
+                foco: "Saúde",
+                descricao: "Exercícios de alongamento simples para fazer na sua mesa e aliviar tensões.",
+                url: "https://mindflow.com/alongamento"
+            }
+        ];
+
+        // Função para renderizar recursos
+        function renderizarRecursos(filtro = 'todos') {
+            const grid = document.getElementById('recursosGrid');
+            grid.innerHTML = '';
+
+            const recursosFiltrados = filtro === 'todos' 
+                ? recursos 
+                : recursos.filter(r => r.foco === filtro);
+
+            recursosFiltrados.forEach(recurso => {
+                const card = document.createElement('div');
+                card.className = 'recurso-card';
+                card.innerHTML = `
+                    <div class="recurso-header">
+                        <span class="tipo-badge">${recurso.tipo}</span>
+                        <span class="foco-badge">${recurso.foco}</span>
+                    </div>
+                    <h3>${recurso.titulo}</h3>
+                    <p>${recurso.descricao}</p>
+                    <a href="${recurso.url}" target="_blank" class="btn btn-secondary">Acessar Recurso</a>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Event listeners para filtros
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderizarRecursos(this.dataset.filter);
+            });
+        });
+
+        // Renderizar recursos ao carregar a página
+        renderizarRecursos();
+    </script>
+</body>
+</html>

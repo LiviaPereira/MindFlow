@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindFlow - Plataforma de Bem-Estar Digital</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">🧠 MindFlow</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Check-in</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Bem-Vindo ao MindFlow</h1>
+            <p>Sua plataforma de bem-estar e saúde mental para o trabalho híbrido</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="checkin-section">
+            <h2>Realize seu Check-in Diário</h2>
+            <p class="subtitle">Monitore seu humor e nível de estresse para receber recomendações personalizadas</p>
+
+            <div class="form-container">
+                <form id="checkinForm">
+                    <div class="form-group">
+                        <label for="usuario">Selecione seu usuário:</label>
+                        <select id="usuario" required>
+                            <option value="">-- Escolha um usuário --</option>
+                            <option value="1">Ana Silva</option>
+                            <option value="2">Bruno Costa</option>
+                            <option value="3">Carla Mendes</option>
+                            <option value="4">Diego Santos</option>
+                            <option value="5">Elisa Oliveira</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="humor">Como está seu humor?</label>
+                        <div class="slider-container">
+                            <input type="range" id="humor" name="humor" min="1" max="5" value="3" class="slider">
+                            <div class="emoji-display">
+                                <span id="humorEmoji">😐</span>
+                                <span id="humorTexto">Neutro</span>
+                            </div>
+                        </div>
+                        <div class="scale-labels">
+                            <span>Muito Ruim</span>
+                            <span>Excelente</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estresse">Qual seu nível de estresse?</label>
+                        <div class="slider-container">
+                            <input type="range" id="estresse" name="estresse" min="1" max="5" value="3" class="slider">
+                            <div class="emoji-display">
+                                <span id="estresseEmoji">😐</span>
+                                <span id="estresseTexto">Moderado</span>
+                            </div>
+                        </div>
+                        <div class="scale-labels">
+                            <span>Muito Baixo</span>
+                            <span>Muito Alto</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Enviar Check-in</button>
+                </form>
+
+                <div id="feedback" class="feedback"></div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h2>Como Funciona o MindFlow?</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="icon">📊</div>
+                    <h3>Monitore seu Bem-Estar</h3>
+                    <p>Realize check-ins diários para acompanhar seu humor e nível de estresse ao longo do tempo.</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">📈</div>
+                    <h3>Análise de Tendências</h3>
+                    <p>Receba análises personalizadas sobre suas tendências de bem-estar nas últimas semanas.</p>
+                </div>
+                <div class="info-card">
+                    <div class="icon">📚</div>
+                    <h3>Recursos Personalizados</h3>
+                    <p>Acesse uma biblioteca de artigos, vídeos e técnicas recomendadas para seu bem-estar.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="about-section">
+            <h2>Sobre o MindFlow</h2>
+            <p>
+                MindFlow é uma plataforma inovadora desenvolvida para apoiar a saúde mental e o bem-estar dos 
+                colaboradores em ambientes de trabalho híbrido. Em um mundo onde a tecnologia está em todos os 
+                lugares, acreditamos que as relações humanas e o cuidado com a saúde mental devem ser prioritários.
+            </p>
+            <p>
+                Nossa missão é oferecer ferramentas simples e eficazes para que cada pessoa possa monitorar seu 
+                bem-estar, receber recomendações personalizadas e acessar recursos que promovam uma vida mais 
+                equilibrada e saudável.
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MindFlow - Plataforma de Bem-Estar Digital. Desenvolvido com ❤️ para o futuro do trabalho.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

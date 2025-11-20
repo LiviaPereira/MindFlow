@@ -1,0 +1,26 @@
+erDiagram
+    USUARIO ||--o{ CHECKIN_HUMOR : "realiza"
+    RECURSO_BEM_ESTAR ||--o{ CHECSO_HUMOR : "recomendado_para"
+
+    USUARIO {
+        int id_usuario PK
+        string nome
+        string email UK
+        date data_cadastro
+    }
+
+    CHECKIN_HUMOR {
+        int id_checkin PK
+        int id_usuario FK
+        date data_checkin
+        int nivel_humor "1-5"
+        int nivel_estresse "1-5"
+    }
+
+    RECURSO_BEM_ESTAR {
+        int id_recurso PK
+        string titulo
+        string tipo
+        string url
+        string foco
+    }

@@ -1,0 +1,99 @@
+classDiagram
+    class Usuario {
+        -int id
+        -String nome
+        -String email
+        -LocalDate dataCadastro
+        +Usuario(int, String, String)
+        +getId() int
+        +setId(int) void
+        +getNome() String
+        +setNome(String) void
+        +getEmail() String
+        +setEmail(String) void
+        +getDataCadastro() LocalDate
+        +setDataCadastro(LocalDate) void
+        +toString() String
+    }
+
+    class CheckinHumor {
+        -int id
+        -int idUsuario
+        -LocalDate data
+        -int nivelHumor
+        -int nivelEstresse
+        +CheckinHumor(int, int, LocalDate, int, int)
+        +getId() int
+        +setId(int) void
+        +getIdUsuario() int
+        +setIdUsuario(int) void
+        +getData() LocalDate
+        +setData(LocalDate) void
+        +getNivelHumor() int
+        +setNivelHumor(int) void
+        +getNivelEstresse() int
+        +setNivelEstresse(int) void
+        -validarNivel(int) int
+        +toString() String
+    }
+
+    class Recurso {
+        -int id
+        -String titulo
+        -String tipo
+        -String url
+        -String foco
+        +Recurso(int, String, String, String, String)
+        +getId() int
+        +setId(int) void
+        +getTitulo() String
+        +setTitulo(String) void
+        +getTipo() String
+        +setTipo(String) void
+        +getUrl() String
+        +setUrl(String) void
+        +getFoco() String
+        +setFoco(String) void
+        +toString() String
+    }
+
+    class MindFlowService {
+        -List~Usuario~ listaUsuarios
+        -List~CheckinHumor~ listaCheckins
+        -List~Recurso~ listaRecursos
+        -int proximoIdUsuario
+        -int proximoIdCheckin
+        +MindFlowService()
+        +cadastrarUsuario(String, String) boolean
+        +realizarCheckin(int, int, int) boolean
+        +buscarUsuarioPorId(int) Usuario
+        +analisarTendencia(int) String
+        +listarUsuarios() List~Usuario~
+        +listarRecursos() List~Recurso~
+        +listarCheckinsDoUsuario(int) List~CheckinHumor~
+        +getTotalUsuarios() int
+        +getTotalCheckins() int
+        -inicializarRecursos() void
+    }
+
+    class MindFlowApp {
+        -MindFlowService service
+        -Scanner scanner
+        +MindFlowApp()
+        +main(String[]) void
+        +executar() void
+        -exibirMenuPrincipal() void
+        -cadastrarUsuario() void
+        -realizarCheckin() void
+        -analisarTendencia() void
+        -exibirRecursos() void
+        -exibirEstatisticas() void
+        -lerString(String) String
+        -lerInteiro(String) int
+    }
+
+    MindFlowService --> Usuario
+    MindFlowService --> CheckinHumor
+    MindFlowService --> Recurso
+    MindFlowApp --> MindFlowService
+    CheckinHumor --> Usuario : references
